@@ -1,6 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import Colors from './pages/colors'
+import StarWars from './pages/starwars'
+import BuzzWords from './pages/buzzwords'
+import ColorForm from './pages/colors/form'
 
 const Menu = props => {
   return (
@@ -33,7 +36,10 @@ const App = props => {
       <div>
         <Switch>
           <Route exact path="/" component={Menu} />
-          <Route path="/colors" component={Colors} />
+          <Route exact path="/colors" component={Colors} />
+          <Route path="/colors/new" component={ColorForm} />
+          <Route path="/starwars" component={StarWars} />
+          <Route path="/buzzwords" component={BuzzWords} />
         </Switch>
       </div>
     </BrowserRouter>

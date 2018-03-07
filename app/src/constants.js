@@ -1,0 +1,5 @@
+export const SET_COLORS = 'SET_COLORS'
+export const SET_STARWARS = 'SET_STARWARS'
+export const SET_BUZZWORDS = 'SET_BUZZWORDS'
+export const ADD_BUZZWORD = 'ADD_BUZZWORD'
+export const CHG_CURRENT_COLOR = 'CHG_CURRENT_COLOR'
