@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-import { SET_COLORS, CHG_CURRENT_COLOR } from '../constants'
+import { SET_COLORS, CHG_CURRENT_COLOR, SET_ERROR_MSG } from '../constants'
 
 const url = 'http://localhost:5000/colors'
 
@@ -13,20 +13,27 @@ export const addColor = (color, history) => async (dispatch, getState) => {
   const method = 'POST'
   const body = JSON.stringify(color)
 
-  const result = await fetch(url, {
+  const result = await fetch('http://localhost:5000/colors', {
     headers,
     method,
     body
-  }).then(res => {
-    console.log('res', res)
-    res.json()
   })
+    .then(res => {
+      console.log('res', res)
+      return res.json()
+    })
+    .catch(err =>
+      dispatch({
+        type: SET_ERROR_MSG,
+        payload: 'Error adding color to the database'
+      })
+    )
 
-  if (result.ok) {
-    dispatch(setColors)
-    history.push('/colors')
-  } else {
-    // handle error
+  if (result) {
+    if (result.ok) {
+      dispatch(setColors)
+      history.push('/colors')
+    }
   }
 }
 

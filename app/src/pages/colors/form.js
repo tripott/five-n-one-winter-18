@@ -4,9 +4,11 @@ import { connect } from 'react-redux'
 import { addColor, chgColor } from '../../action-creators/colors'
 
 const ColorForm = props => {
-  console.log('ColorForm is rendering and here are the props', props)
+  const errorBanner = props.errorMsg === '' ? null : <h2>{props.errorMsg}</h2>
+
   return (
     <div>
+      {errorBanner}
       <h1>Add New Color</h1>
       <Form
         cancelUrl="/colors"
@@ -21,7 +23,8 @@ const ColorForm = props => {
 const mapStateToProps = state => {
   console.log('ColorForm state', state)
   return {
-    currentColor: state.currentColor
+    currentColor: state.currentColor,
+    errorMsg: state.appError
   }
 }
 
