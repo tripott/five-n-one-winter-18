@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { map } from 'ramda'
 
 //const Form = ({id, name, value, onChange, onSubmit, cancelUrl}) => {
 
