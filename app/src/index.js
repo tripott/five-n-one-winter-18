@@ -5,6 +5,7 @@ import store from './store'
 import { setColors } from './action-creators/colors'
 import setStarWarsCharacters from './action-creators/starwars'
 import { setBuzzwords } from './action-creators/buzzwords'
+import { setCookies } from './action-creators/cookies'
 import App from './App'
 import 'tachyons'
 
@@ -18,3 +19,4 @@ render(
 store.dispatch(setColors)
 store.dispatch(setStarWarsCharacters)
 store.dispatch(setBuzzwords)
+store.dispatch(setCookies)

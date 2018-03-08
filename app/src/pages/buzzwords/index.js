@@ -16,7 +16,6 @@ const buzzwords = props => {
 }
 
 const mapStateToProps = state => {
-  console.log('state', state)
   return { buzzwords: state.buzzwords }
 }
 

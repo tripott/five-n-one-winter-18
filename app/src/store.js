@@ -4,6 +4,7 @@ import { colors, currentColor } from './reducers/colors'
 import { starWarsCharacters } from './reducers/starwars'
 import { buzzwords, currentBuzzword } from './reducers/buzzwords'
 import { appError } from './reducers/errors'
+import { cookies, currentCookie } from './reducers/cookies'
 
 export default createStore(
   combineReducers({
@@ -12,7 +13,9 @@ export default createStore(
     starWarsCharacters,
     buzzwords,
     appError,
-    currentBuzzword
+    currentBuzzword,
+    cookies,
+    currentCookie
   }),
   applyMiddleware(thunk)
 )

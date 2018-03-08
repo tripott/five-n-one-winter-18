@@ -5,6 +5,8 @@ import StarWars from './pages/starwars'
 import BuzzWords from './pages/buzzwords'
 import ColorForm from './pages/colors/form'
 import BuzzWordForm from './pages/buzzwords/form'
+import Cookies from './pages/cookies'
+import CookiesForm from './pages/cookies/form'
 
 const Menu = props => {
   return (
@@ -21,7 +23,7 @@ const Menu = props => {
           <Link to="/starwars">Star Wars Names</Link>
         </li>
         <li>
-          <Link to="/fortune-cookies">Fortune Cookies</Link>
+          <Link to="/cookies">Fortune Cookies</Link>
         </li>
         <li>
           <Link to="/emojis">Emojis</Link>
@@ -30,6 +32,13 @@ const Menu = props => {
     </div>
   )
 }
+
+/*
+<Route
+  path="/cookies/new"
+  render={props => <CookiesForm {...props} formTitle="Add Cookie" />}
+/>
+*/
 
 const App = props => {
   return (
@@ -46,6 +55,11 @@ const App = props => {
             render={props => (
               <BuzzWordForm {...props} formTitle="Add Buzzword" />
             )}
+          />
+          <Route exact path="/cookies" component={Cookies} />
+          <Route
+            path="/cookies/new"
+            render={props => <CookiesForm {...props} formTitle="Add Cookie" />}
           />
         </Switch>
       </div>

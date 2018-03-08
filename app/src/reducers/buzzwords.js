@@ -3,7 +3,7 @@ import {
   CHG_CURRENT_BUZZWORD,
   CLEAR_BUZZWORD_FORMDATA
 } from '../constants'
-import { append, merge } from 'ramda'
+import { merge } from 'ramda'
 
 //  {type: SET_BUZZWORDS, payload: [{some array of buzzword objects}]}
 export const buzzwords = (state = [], action) => {
