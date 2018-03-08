@@ -15,6 +15,7 @@ const ColorForm = props => {
         onChange={props.onChange}
         onSubmit={e => props.onSubmit(props.history, props.currentColor)}
         {...props.currentColor}
+        showValueInput={true}
       />
     </div>
   )

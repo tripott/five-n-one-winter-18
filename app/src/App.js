@@ -4,6 +4,7 @@ import Colors from './pages/colors'
 import StarWars from './pages/starwars'
 import BuzzWords from './pages/buzzwords'
 import ColorForm from './pages/colors/form'
+import BuzzWordForm from './pages/buzzwords/form'
 
 const Menu = props => {
   return (
@@ -39,7 +40,13 @@ const App = props => {
           <Route exact path="/colors" component={Colors} />
           <Route path="/colors/new" component={ColorForm} />
           <Route path="/starwars" component={StarWars} />
-          <Route path="/buzzwords" component={BuzzWords} />
+          <Route exact path="/buzzwords" component={BuzzWords} />
+          <Route
+            path="/buzzwords/new"
+            render={props => (
+              <BuzzWordForm {...props} formTitle="Add Buzzword" />
+            )}
+          />
         </Switch>
       </div>
     </BrowserRouter>
