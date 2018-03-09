@@ -4,7 +4,8 @@ import {
   CHG_CURRENT_COLOR,
   SET_ERROR_MSG,
   CHG_CURRENT_VIEW_EDIT_COLOR,
-  RESET_NEW_COLOR_FORM
+  RESET_NEW_COLOR_FORM,
+  RESET_VIEW_EDIT_COLOR_FORM
 } from '../constants'
 
 const url = 'http://localhost:5000/colors'
@@ -24,7 +25,7 @@ export const addColor = (color, history) => async (dispatch, getState) => {
   const method = 'POST'
   const body = JSON.stringify(color)
 
-  const result = await fetch('http://localhost:5000/colors', {
+  const result = await fetch(url, {
     headers,
     method,
     body
@@ -52,4 +53,17 @@ export const addColor = (color, history) => async (dispatch, getState) => {
 // Handles binding data entered into the form with redux
 export const chgColor = (field, value) => (dispatch, getState) => {
   dispatch({ type: CHG_CURRENT_COLOR, payload: { [field]: value } })
+}
+
+export const removeColor = (id, history) => async (dispatch, getState) => {
+  const method = 'DELETE'
+  const response = await fetch(`${url}/${id}`, { method })
+    .then(res => res.json())
+    .catch(err => console.log('DELETE color ERROR in reducer', err))
+
+  if (response.ok) {
+    dispatch({ type: RESET_VIEW_EDIT_COLOR_FORM })
+    dispatch(setColors)
+    history.push('/colors')
+  }
 }

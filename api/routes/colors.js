@@ -1,7 +1,15 @@
 const csscolorsObj = require('css-color-names')
-const { map, keys, prop } = require('ramda')
 const uuid = require('uuid')
-const { append, find } = require('ramda')
+const {
+  map,
+  keys,
+  append,
+  find,
+  reject,
+  compose,
+  equals,
+  prop
+} = require('ramda')
 // create color document
 const createColor = k => ({
   id: uuid.v4(),
@@ -26,5 +34,11 @@ module.exports = app => {
 
   app.get('/colors/:id', (req, res) => {
     res.send(find(c => c.id === req.params.id, colors))
+  })
+
+  app.delete('/colors/:id', (req, res) => {
+    //colors = reject(c => c.id === req.params.id ,colors)
+    colors = reject(compose(equals(req.params.id), prop('id')), colors)
+    res.send({ ok: true })
   })
 }

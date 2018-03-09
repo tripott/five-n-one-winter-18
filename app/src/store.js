@@ -1,6 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { colors, currentColor, currentViewEditColor } from './reducers/colors'
+import {
+  colors,
+  currentColor,
+  currentViewEditColor,
+  showConfirmDeleteColor
+} from './reducers/colors'
 import {
   starWarsCharacters,
   currentStarWarsCharacter
@@ -14,6 +19,7 @@ export default createStore(
     colors,
     currentColor,
     currentViewEditColor,
+    showConfirmDeleteColor,
     cookies,
     currentCookie,
     starWarsCharacters,
