@@ -1,7 +1,7 @@
 const csscolorsObj = require('css-color-names')
 const { map, keys, prop } = require('ramda')
 const uuid = require('uuid')
-const { append } = require('ramda')
+const { append, find } = require('ramda')
 // create color document
 const createColor = k => ({
   id: uuid.v4(),
@@ -17,7 +17,14 @@ module.exports = app => {
   })
 
   app.post('/colors', (req, res) => {
-    colors = append(req.body, colors)
+    colors = append(
+      { id: uuid.v4(), name: req.body.name, value: req.body.value },
+      colors
+    )
     res.send({ ok: true })
+  })
+
+  app.get('/colors/:id', (req, res) => {
+    res.send(find(c => c.id === req.params.id, colors))
   })
 }

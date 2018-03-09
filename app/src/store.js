@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { colors, currentColor } from './reducers/colors'
+import { colors, currentColor, currentViewEditColor } from './reducers/colors'
 import { starWarsCharacters } from './reducers/starwars'
 import { buzzwords, currentBuzzword } from './reducers/buzzwords'
 import { appError } from './reducers/errors'
@@ -15,7 +15,8 @@ export default createStore(
     appError,
     currentBuzzword,
     cookies,
-    currentCookie
+    currentCookie,
+    currentViewEditColor
   }),
   applyMiddleware(thunk)
 )

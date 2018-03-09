@@ -7,6 +7,7 @@ import ColorForm from './pages/colors/form'
 import BuzzWordForm from './pages/buzzwords/form'
 import Cookies from './pages/cookies'
 import CookiesForm from './pages/cookies/form'
+import ShowColor from './pages/colors/show'
 
 const Menu = props => {
   return (
@@ -61,6 +62,7 @@ const App = props => {
             path="/cookies/new"
             render={props => <CookiesForm {...props} formTitle="Add Cookie" />}
           />
+          <Route path="/colors/:id" component={ShowColor} />
         </Switch>
       </div>
     </BrowserRouter>
