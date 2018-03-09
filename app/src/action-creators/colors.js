@@ -55,6 +55,28 @@ export const chgColor = (field, value) => (dispatch, getState) => {
   dispatch({ type: CHG_CURRENT_COLOR, payload: { [field]: value } })
 }
 
+export const chgEditColor = (field, value) => (dispatch, getState) => {
+  dispatch({ type: CHG_CURRENT_VIEW_EDIT_COLOR, payload: { [field]: value } })
+}
+
+export const updateColor = (color, history) => async (dispatch, getState) => {
+  const result = await fetch(`${url}/${color.id}`, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'PUT',
+    body: JSON.stringify(color)
+  }).then(res => {
+    console.log('updateColor action creator', res)
+    return res.json()
+  })
+
+  if (result.ok) {
+    dispatch(setColors)
+    history.push('/colors/' + color.id)
+  }
+}
+
 export const removeColor = (id, history) => async (dispatch, getState) => {
   const method = 'DELETE'
   const response = await fetch(`${url}/${id}`, { method })

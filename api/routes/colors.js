@@ -8,7 +8,8 @@ const {
   reject,
   compose,
   equals,
-  prop
+  prop,
+  propEq
 } = require('ramda')
 // create color document
 const createColor = k => ({
@@ -34,6 +35,20 @@ module.exports = app => {
 
   app.get('/colors/:id', (req, res) => {
     res.send(find(c => c.id === req.params.id, colors))
+  })
+
+  app.put('/colors/:id', (req, res) => {
+    if (!req.body) {
+      return res
+        .status(500)
+        .send({ ok: false, message: 'Color Object Required' })
+    }
+
+    colors = map(
+      color => (propEq('id', req.params.id, color) ? req.body : color),
+      colors
+    )
+    res.send({ ok: true })
   })
 
   app.delete('/colors/:id', (req, res) => {

@@ -16,7 +16,7 @@ export const colors = (state = [], action) => {
       return state
   }
 }
-
+//add form
 export const currentColor = (state = {}, action) => {
   switch (action.type) {
     case CHG_CURRENT_COLOR:
@@ -28,6 +28,7 @@ export const currentColor = (state = {}, action) => {
   }
 }
 
+//view and edit form
 export const currentViewEditColor = (state = {}, action) => {
   switch (action.type) {
     case CHG_CURRENT_VIEW_EDIT_COLOR:

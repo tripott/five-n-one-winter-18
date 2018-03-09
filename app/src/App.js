@@ -9,6 +9,7 @@ import BuzzWordForm from './pages/buzzwords/form'
 import Cookies from './pages/cookies'
 import CookiesForm from './pages/cookies/form'
 import ShowColor from './pages/colors/show'
+import EditColorForm from './pages/colors/edit'
 
 const Menu = props => {
   return (
@@ -49,7 +50,10 @@ const App = props => {
         <Switch>
           <Route exact path="/" component={Menu} />
           <Route exact path="/colors" component={Colors} />
-          <Route path="/colors/new" component={ColorForm} />
+          <Route exact path="/colors/new" component={ColorForm} />
+          <Route exact path="/colors/:id" component={ShowColor} />
+          <Route path="/colors/:id/edit" component={EditColorForm} />
+
           <Route exact path="/starwars" component={StarWars} />
           <Route
             path="/starwars/new"
@@ -70,7 +74,6 @@ const App = props => {
             path="/cookies/new"
             render={props => <CookiesForm {...props} formTitle="Add Cookie" />}
           />
-          <Route path="/colors/:id" component={ShowColor} />
         </Switch>
       </div>
     </BrowserRouter>
